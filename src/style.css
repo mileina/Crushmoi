@@ -1,0 +1,126 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+}
+
+.invitation-response {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.invitation-response__title {
+  margin-bottom: 20px;
+}
+
+.invitation-response__question {
+  margin-bottom: 40px;
+}
+
+.invitation-response__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.invitation-response__button {
+  padding: 10px 20px;
+  border: 1px solid #ff6b81;
+  background-color: #ff6b81;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.invitation-response__button--yes {
+  border-color: black;
+}
+
+.invitation-response__button:hover {
+  background-color: #ff6b81;
+  color: white;
+}
+
+.invitation-response__hand-icon {
+  display: block;
+  font-size: 40px;
+  margin-top: 10px;
+  margin-left: -70px;
+  animation: bounce 0.2s infinite alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+
+.no-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.yes-message-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ccc;
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+
+.super-title {
+  color: #ff6b81; 
+  font-size: 1.5em; 
+  margin-bottom: 15px; 
+}
+
+.message {
+  color: #333; 
+  font-size: 1.2em; 
+  margin-bottom: 10px;
+}
+
+
+.return-button {
+  padding: 10px 20px;
+  background-color: #ff6b81;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.return-button:hover {
+  background-color: black;
+}
+
+.happy-gif {
+  width: 200px; 
+  height: auto;
+  display: block;
+  margin: 0 auto; 
+}
