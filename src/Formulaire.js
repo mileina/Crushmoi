@@ -12,6 +12,10 @@ function Formulaire() {
   const [copySuccess, setCopySuccess] = useState('');
   const instagramLink = "https://www.instagram.com/mileinya";
   const customLink = "https://cloud-campus.fr/cloud-campus-ecole-de-developpement-web-full-stack-en-distanciel-alternance/";
+  const handleTouchStart = (event) => {
+  event.preventDefault();
+  handleSubmit(event);
+};
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -100,7 +104,7 @@ function Formulaire() {
           ></textarea>
         </div>
         
-        <button type="submit">Envoyer</button>
+        <button type="submit" onTouchStart={handleTouchStart}>Envoyer</button>
       </form>
       {generatedLink && (
         <div className="link-container">
