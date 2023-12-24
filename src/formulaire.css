@@ -101,14 +101,15 @@ button:hover {
     background-color: #ccc;
   }
   
-
-  .generated-link-textarea {
-    width: 100%; 
+  .generated-link {
+    display: block; 
+    margin-top: 10px;
     padding: 10px;
+    background-color: #f4f4f4;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-top: 10px;
-    background-color: #f4f4f4;
-    resize: none; 
+    color: blue;
+    text-decoration: underline;
+    word-break: break-all;
   }
   

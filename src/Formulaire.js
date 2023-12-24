@@ -105,12 +105,9 @@ function Formulaire() {
       {generatedLink && (
         <div>
           <p>Votre lien d'invitation unique :</p>
-          <textarea
-            className="generated-link-textarea"
-            value={generatedLink}
-            readOnly
-            onClick={(e) => e.target.select()}
-          />
+          <a href={generatedLink} target="_blank" rel="noopener noreferrer" className="generated-link">
+            {generatedLink}
+          </a>
           <button onClick={copyToClipboard}>Copier le lien</button>
           {copySuccess && <div style={{ color: 'green' }}>{copySuccess}</div>}
         </div>
