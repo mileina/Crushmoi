@@ -12,10 +12,6 @@ function Formulaire() {
   const [copySuccess, setCopySuccess] = useState('');
   const instagramLink = "https://www.instagram.com/mileinya";
   const customLink = "https://cloud-campus.fr/cloud-campus-ecole-de-developpement-web-full-stack-en-distanciel-alternance/";
-  const handleTouchStart = (event) => {
-  event.preventDefault();
-  handleSubmit(event);
-};
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -104,18 +100,22 @@ function Formulaire() {
           ></textarea>
         </div>
         
-        <button type="submit" onTouchStart={handleTouchStart}>Envoyer</button>
+        <button type="button" onClick={handleSubmit}>Envoyer</button>
       </form>
-      {generatedLink && (
-        <div className="link-container">
-          <p>Votre lien d'invitation unique :</p>
-          <a href={generatedLink} target="_blank" rel="noopener noreferrer" className="generated-link">
-            {generatedLink}
-          </a>
-          <button onClick={copyToClipboard}>Copier le lien</button>
-          {copySuccess && <div style={{ color: 'green' }}>{copySuccess}</div>}
-        </div>
-      )}
+      <div className="link-container">
+        <p>Votre lien d'invitation unique :</p>
+        {generatedLink ? (
+          <React.Fragment>
+            <a href={generatedLink} target="_blank" rel="noopener noreferrer" className="generated-link">
+              {generatedLink}
+            </a>
+            <button onClick={copyToClipboard}>Copier le lien</button>
+            {copySuccess && <div style={{ color: 'green' }}>{copySuccess}</div>}
+          </React.Fragment>
+        ) : (
+          <p>Le lien apparaîtra ici une fois généré.</p>
+        )}
+      </div>
 
 <div className="buttons-container">
   <a href={instagramLink} target="_blank" rel="noopener noreferrer">
