@@ -67,21 +67,6 @@ button:hover {
 }
 
 
-@media screen and (max-width: 480px) {
-    .container {
-        width: 95%;
-        margin: 10px auto;
-        padding: 15px;
-    }
-
-    body {
-        padding: 5px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-}
 
 .buttons-container {
     display: flex; 
