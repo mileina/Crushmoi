@@ -102,4 +102,11 @@ button:hover {
   }
   
 
+  .generated-link {
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px dashed #ccc;
+    margin-top: 10px;
+    word-break: break-all; 
+  }
   
