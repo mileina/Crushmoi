@@ -18,7 +18,7 @@ function Formulaire() {
     const id = uuidv4(); 
     const formData = { id, email, date, messageOui, messageNon };
   
-    fetch('http://localhost:3001/api/invitation', {
+    fetch('http://51.20.107.157:3001/api/invitation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

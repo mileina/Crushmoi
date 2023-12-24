@@ -54,7 +54,7 @@ function Invitation() {
     const [invitationData, setInvitationData] = useState(null);
     const fetchInvitationData = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/invitation/${id}`);
+            const response = await fetch(`http://51.20.107.157:3001/api/invitation/${id}`);
             if (response.ok) {
                 const data = await response.json();
                 setInvitationData(data);
