@@ -1,22 +1,27 @@
+require('dotenv').config({ path: './.env.eu-nort' });
 
+
+
+// Vérification des variables d'environnement
+console.log("DB Host:", process.env.DB_HOST);
+console.log("DB User:", process.env.DB_USER);
+console.log("DB Password:", process.env.DB_PASSWORD);
+console.log("DB Database:", process.env.DB_DATABASE);
+console.log("DB Port:", process.env.DB_PORT);
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mysql = require('mysql');
 
 const app = express();
 const port = process.env.PORT || 3001;
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
-});
-
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // Connection to MariaDB
+const mysql = require('mysql');
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -25,23 +30,22 @@ const db = mysql.createConnection({
   port: process.env.DB_PORT
 });
 
-
-db.connect((err) => {
+db.connect(err => {
   if (err) {
-    console.error('Error connecting to the database:', err);
+    console.error('Error connecting to the database: ' + err.stack);
     return;
   }
-  console.log('Connected to the database');
+  console.log('Connected to database.');
 });
 
 // Routes
 
-// Accueil du serveur
+// Home route
 app.get('/', (req, res) => {
   res.send('Server is up and running');
 });
 
-// Récupération des données d'invitation
+// Fetch invitation data
 app.get('/api/invitation/:id', (req, res) => {
     const invitationId = req.params.id;
     const query = 'SELECT * FROM invitations WHERE id = ?';
@@ -58,7 +62,7 @@ app.get('/api/invitation/:id', (req, res) => {
     });
 });
 
-// Création d'une nouvelle invitation
+// Create a new invitation
 app.post('/api/invitation', (req, res) => {
     const { id, email, date, messageOui, messageNon } = req.body;
     const query = 'INSERT INTO invitations (id, email, date, messageOui, messageNon) VALUES (?, ?, ?, ?, ?)';
@@ -71,8 +75,7 @@ app.post('/api/invitation', (req, res) => {
     });
 });
 
-// Démarrage du serveur
+// Start the server
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
-

@@ -18,7 +18,7 @@ function Formulaire() {
     const id = uuidv4(); 
     const formData = { id, email, date, messageOui, messageNon };
   
-fetch('https://crushmoi-253caabc1013.herokuapp.com/api/invitation', {
+fetch('http://localhost:3001/api/invitation', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
