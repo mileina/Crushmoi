@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -7,6 +7,10 @@ const mysql = require('mysql');
 
 const app = express();
 const port = process.env.PORT || 3001;
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
+
 
 // Middleware
 app.use(cors());
@@ -20,6 +24,7 @@ const db = mysql.createConnection({
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT
 });
+
 
 db.connect((err) => {
   if (err) {
@@ -36,19 +41,7 @@ app.get('/', (req, res) => {
   res.send('Server is up and running');
 });
 
-// Récupération de toutes les invitations
-app.get('/api/invitation', (req, res) => {
-  const query = 'SELECT * FROM invitations';
-  db.query(query, (err, results) => {
-      if (err) {
-          res.status(500).json({ error: 'Erreur lors de la récupération des données' });
-      } else {
-          res.json(results);
-      }
-  });
-});
-
-// Récupération des données d'une invitation spécifique
+// Récupération des données d'invitation
 app.get('/api/invitation/:id', (req, res) => {
     const invitationId = req.params.id;
     const query = 'SELECT * FROM invitations WHERE id = ?';
@@ -82,3 +75,4 @@ app.post('/api/invitation', (req, res) => {
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
+

@@ -18,27 +18,28 @@ function Formulaire() {
     const id = uuidv4(); 
     const formData = { id, email, date, messageOui, messageNon };
   
- fetch('https://crushmoi-253caabc1013.herokuapp.com/api/invitation', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    const newLink = `${window.location.origin}/invitations/${data.id}`;
-    setGeneratedLink(newLink);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-}
+fetch('https://crushmoi-253caabc1013.herokuapp.com/api/invitation', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(formData),
+})
+.then(response => {
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
+})
+.then(data => {
+  const newLink = `${window.location.origin}/invitation/${id}`; 
+  setGeneratedLink(newLink);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+
+  };
   
 
   const copyToClipboard = () => {
@@ -99,22 +100,23 @@ function Formulaire() {
           ></textarea>
         </div>
         
-        <button type="button" onClick={handleSubmit}>Envoyer</button>
+        <button type="submit">Envoyer</button>
       </form>
-      <div className="link-container">
-        <p>Votre lien d'invitation unique :</p>
-        {generatedLink ? (
-          <React.Fragment>
-            <a href={generatedLink} target="_blank" rel="noopener noreferrer" className="generated-link">
-              {generatedLink}
-            </a>
-            <button onClick={copyToClipboard}>Copier le lien</button>
-            {copySuccess && <div style={{ color: 'green' }}>{copySuccess}</div>}
-          </React.Fragment>
-        ) : (
-          <p>Le lien apparaîtra ici une fois généré.</p>
-        )}
-      </div>
+      {generatedLink && (
+  <div>
+  <p>Votre lien d'invitation unique:</p>
+  <input
+    type="text"
+    value={generatedLink}
+    readOnly
+    onClick={(e) => e.target.select()}
+  />
+  <button onClick={copyToClipboard}>Copier le lien</button>
+  {copySuccess && <div style={{ color: 'green' }}>{copySuccess}</div>}
+  
+</div>
+
+      )}
 
 <div className="buttons-container">
   <a href={instagramLink} target="_blank" rel="noopener noreferrer">
