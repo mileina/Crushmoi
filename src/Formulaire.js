@@ -103,15 +103,18 @@ function Formulaire() {
         <button type="submit">Envoyer</button>
       </form>
       {generatedLink && (
-      <div>
-        <p>Votre lien d'invitation unique :</p>
-        <div className="generated-link" onClick={() => navigator.clipboard.writeText(generatedLink)}>
-          {generatedLink}
+        <div>
+          <p>Votre lien d'invitation unique :</p>
+          <textarea
+            className="generated-link-textarea"
+            value={generatedLink}
+            readOnly
+            onClick={(e) => e.target.select()}
+          />
+          <button onClick={copyToClipboard}>Copier le lien</button>
+          {copySuccess && <div style={{ color: 'green' }}>{copySuccess}</div>}
         </div>
-        <button onClick={copyToClipboard}>Copier le lien</button>
-        {copySuccess && <div style={{ color: 'green' }}>{copySuccess}</div>}
-      </div>
-    )}
+      )}
 
 <div className="buttons-container">
   <a href={instagramLink} target="_blank" rel="noopener noreferrer">
