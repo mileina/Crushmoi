@@ -103,7 +103,7 @@ function Formulaire() {
         <button type="submit">Envoyer</button>
       </form>
       {generatedLink && (
-        <div>
+        <div className="link-container">
           <p>Votre lien d'invitation unique :</p>
           <a href={generatedLink} target="_blank" rel="noopener noreferrer" className="generated-link">
             {generatedLink}
