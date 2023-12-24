@@ -18,28 +18,27 @@ function Formulaire() {
     const id = uuidv4(); 
     const formData = { id, email, date, messageOui, messageNon };
   
-    fetch('http://51.20.107.157:3001/api/invitation', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    
-    .then(data => {
-      const newLink = `${window.location.origin}/invitation/${id}`; 
-      setGeneratedLink(newLink);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-  };
+ fetch('https://crushmoi-253caabc1013.herokuapp.com/api/invitation', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    const newLink = `${window.location.origin}/invitations/${data.id}`;
+    setGeneratedLink(newLink);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
   
 
   const copyToClipboard = () => {
