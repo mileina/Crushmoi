@@ -18,38 +18,34 @@ function Formulaire() {
     const id = uuidv4(); 
     const formData = { id, email, date, messageOui, messageNon };
   
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const id = uuidv4(); 
-      const formData = { id, email, date, messageOui, messageNon };
-    
-      fetch('https://main.d18x6az5qfghdm.amplifyapp.com/api/invitation', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-      .then(response => {
-        console.log("Response: ", response);
-        return response.text(); 
-      })
-      .then(text => {
-        console.log("Response Body: ", text);
-        try {
-          const data = JSON.parse(text);  
-          const newLink = `https://main.d18x6az5qfghdm.amplifyapp.com/invitation/${data.id}`; 
-          setGeneratedLink(newLink);
-        } catch (e) {
-          throw new Error(`Could not parse JSON: ${text}`);
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        console.error('Error message:', error.message);
-      });
-    };
-    
+    fetch('https://main.d18x6az5qfghdm.amplifyapp.com/api/invitation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => {
+      console.log("Response: ", response);
+      return response.text();  // Utilisez text() pour lire le corps de la réponse en tant que texte brut
+    })
+    .then(text => {
+      console.log("Response Body: ", text);
+      try {
+        const data = JSON.parse(text);  // Essayez de parser le texte en JSON
+        const newLink = `https://main.d18x6az5qfghdm.amplifyapp.com/invitation/${data.id}`; 
+        setGeneratedLink(newLink);
+      } catch (e) {
+        throw new Error(`Could not parse JSON: ${text}`);
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      console.error('Error message:', error.message);
+    });
+  };
+  
+  
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatedLink)
