@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 // Configuration CORS
 const corsOptions = {
-  origin: 'https://crushmoi.vercel.app/',
+  origin: 'https://crushmoi-6kf1643mt-mileinas-projects.vercel.app/',
   optionsSuccessStatus: 200
 };
 
