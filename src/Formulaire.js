@@ -18,33 +18,32 @@ function Formulaire() {
     const id = uuidv4(); 
     const formData = { id, email, date, messageOui, messageNon };
   
-    fetch('http://localhost:3001/api/invitation', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-    .then(response => {
-      console.log("Response: ", response);
-      return response.text();  // Utilisez text() pour lire le corps de la réponse en tant que texte brut
-    })
-    .then(text => {
-      console.log("Response Body: ", text);
-      try {
-        const data = JSON.parse(text);  // Essayez de parser le texte en JSON
-        const newLink = `http://localhost:3001/api/invitation/${data.id}`; 
-        setGeneratedLink(newLink);
-      } catch (e) {
-        throw new Error(`Could not parse JSON: ${text}`);
-      }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      console.error('Error message:', error.message);
-    });
+    console.log(formData)
+fetch('https://crushmoi-b78956e48bb4.herokuapp.com/api/invitation', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(formData),
+})
+.then(response => {
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
+})
+
+.then(data => {
+  const newLink = `https://crushmoi-b78956e48bb4.herokuapp.com/invitation/${data.id}`; 
+  setGeneratedLink(newLink);
+})
+
+
+.catch((error) => {
+  console.error('Error:', error);
+});
+
   };
-  
   
 
   const copyToClipboard = () => {
