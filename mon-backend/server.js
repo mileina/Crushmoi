@@ -1,7 +1,5 @@
 require('dotenv').config({ path: './.env.eu-nort' });
 
-
-
 // Vérification des variables d'environnement
 console.log("DB Host:", process.env.DB_HOST);
 console.log("DB User:", process.env.DB_USER);
