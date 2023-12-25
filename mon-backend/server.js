@@ -18,13 +18,12 @@ app.use((req, res, next) => {
 
 // Configuration CORS
 const corsOptions = {
-  origin: 'https://crushmoi-git-main-mileinas-projects.vercel.app',
+  origin: 'https://crushmoi-b78956e48bb4.herokuapp.com',
   optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions)); 
-app.use(bodyParser.json());
-
+app.use(bodyParser.json()); 
 
 // Vérification des variables d'environnement
 console.log("DB Host:", process.env.DB_HOST);
