@@ -18,12 +18,13 @@ app.use((req, res, next) => {
 
 // Configuration CORS
 const corsOptions = {
-  origin: 'https://crushmoi-6kf1643mt-mileinas-projects.vercel.app/',
+  origin: 'https://crushmoi-git-main-mileinas-projects.vercel.app',
   optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions)); 
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
+
 
 // Vérification des variables d'environnement
 console.log("DB Host:", process.env.DB_HOST);
