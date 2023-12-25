@@ -7,14 +7,14 @@ const mysql = require('mysql');
 
 const app = express();
 const port = process.env.PORT || 3001;
-
-// Configuration CORS
 const corsOptions = {
-  origin: 'https://crushmoi-b78956e48bb4.herokuapp.com',
+  origin: ['http://localhost:3000', 'https://crushmoi-b78956e48bb4.herokuapp.com'], 
   optionsSuccessStatus: 200
 };
 
-app.use(cors(corsOptions)); 
+
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json()); 
 
 // Vérification des variables d'environnement
