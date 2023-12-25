@@ -35,6 +35,7 @@ function Invitation() {
     const [showUhImage, setShowUhImage] = useState(false);
     const [showCryImage, setShowCryImage] = useState(false);
     const [clickCount, setClickCount] = useState(0);
+    const [showDommageMessage, setShowDommageMessage] = useState(false);
     const [showTitleAndQuestion, setShowTitleAndQuestion] = useState(true);
     const [showYesMessage, setShowYesMessage] = useState(false);;
     const [showRefusalMessage, setShowRefusalMessage] = useState(false);
@@ -50,10 +51,9 @@ function Invitation() {
 
 
 
-    const [invitationData, setInvitationData] = useState(null);
     const fetchInvitationData = async (id) => {
         try {
-            const response = await fetch(`https://crushmoi-b78956e48bb4.herokuapp.com/api/invitation/${id}`);
+            const response = await fetch(`https://apicrushme-78ffc6826d3c.herokuapp.com/api/invitation/${id}`);
             if (response.ok) {
                 const data = await response.json();
                 setInvitationData(data);
