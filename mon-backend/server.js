@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 // Configuration CORS
 const corsOptions = {
-  origin: 'https://crushmoi-b78956e48bb4.herokuapp.com',
+  origin: 'https://main.d18x6az5qfghdm.amplifyapp.com',
   optionsSuccessStatus: 200
 };
 

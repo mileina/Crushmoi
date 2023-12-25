@@ -19,7 +19,7 @@ function Formulaire() {
     const formData = { id, email, date, messageOui, messageNon };
   
     console.log(formData)
-fetch('http://localhost:3001/api/invitation', {
+    fetch('https://main.d18x6az5qfghdm.amplifyapp.com/api/invitation', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ fetch('http://localhost:3001/api/invitation', {
 })
 
 .then(data => {
-  const newLink = `https://crushmoi-b78956e48bb4.herokuapp.com/invitation/${data.id}`; 
+  const newLink = `https://https://main.d18x6az5qfghdm.amplifyapp.com//invitation/${data.id}`; 
   setGeneratedLink(newLink);
 })
 
