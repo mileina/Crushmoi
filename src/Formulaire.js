@@ -69,7 +69,7 @@ function Formulaire() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="date">Choisi une date :</label>
+          <label htmlFor="date">Choisi une date de rendez vous</label>
           <input
             type="date"
             id="date"
