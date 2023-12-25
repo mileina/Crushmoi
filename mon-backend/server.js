@@ -8,6 +8,14 @@ const mysql = require('mysql');
 const app = express();
 const port = process.env.PORT || 3001;
 
+app.use((req, res, next) => {
+  if (req.header('x-forwarded-proto') !== 'https' && process.env.NODE_ENV === 'production') {
+    res.redirect(`https://${req.header('host')}${req.url}`);
+  } else {
+    next();
+  }
+});
+
 // Configuration CORS
 const corsOptions = {
   origin: 'https://crushmoi-b78956e48bb4.herokuapp.com',
