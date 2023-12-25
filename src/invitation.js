@@ -40,6 +40,18 @@ function Invitation() {
     const [showYesMessage, setShowYesMessage] = useState(false);;
     const [showRefusalMessage, setShowRefusalMessage] = useState(false);
 
+    const initialValue = {
+        email: '',
+        date: '',
+        messageOui: '',
+        messageNon: '',
+        // Ajoutez d'autres champs si nécessaire
+    };
+    
+    const [invitationData, setInvitationData] = useState(initialValue);
+    
+
+
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString('fr-FR', options);
