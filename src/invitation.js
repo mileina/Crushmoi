@@ -96,7 +96,6 @@ if (showYesMessage && invitationData) {
         <div className="yes-message-container">
             <img src={gifPath} alt="GIF joyeux" className="happy-gif" />
             <h2 className="super-title">Le message de ton crush</h2>
-            <em>Je sais que tu va pas appuyer sur non !</em>
             <p className="message">{invitationData.messageOui}</p>
             <p className="message">Date de l'invitation : {formatDate(invitationData.date)}</p>
             <button className="return-button" onClick={() => navigate('/')}>Retour</button>
@@ -210,6 +209,7 @@ if (showYesMessage && invitationData) {
                         <p className="invitation-response__question">
                             Je t'aime vraiment bien, tu voudrais bien qu'on se date ?
                         </p>
+                        <em>Je sais que tu va pas appuyer sur non !</em>
                     </>
                 )}
 {showRefusalMessage ? (
