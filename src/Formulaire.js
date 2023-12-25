@@ -18,7 +18,7 @@ function Formulaire() {
     const id = uuidv4(); 
     const formData = { id, email, date, messageOui, messageNon };
   
-    fetch('https://main.d18x6az5qfghdm.amplifyapp.com/api/invitation', {
+    fetch('https://crushmoi.vercel.app/api/invitation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ function Formulaire() {
       console.log("Response Body: ", text);
       try {
         const data = JSON.parse(text);  // Essayez de parser le texte en JSON
-        const newLink = `https://main.d18x6az5qfghdm.amplifyapp.com/invitation/${data.id}`; 
+        const newLink = `https://crushmoi.vercel.app/invitation/${data.id}`; 
         setGeneratedLink(newLink);
       } catch (e) {
         throw new Error(`Could not parse JSON: ${text}`);

@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 // Configuration CORS
 const corsOptions = {
-  origin: 'https://main.d18x6az5qfghdm.amplifyapp.com',
+  origin: 'https://crushmoi.vercel.app/',
   optionsSuccessStatus: 200
 };
 

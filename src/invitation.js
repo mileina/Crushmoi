@@ -54,7 +54,7 @@ function Invitation() {
     const [invitationData, setInvitationData] = useState(null);
     const fetchInvitationData = async (id) => {
         try {
-            const response = await fetch(`https://main.d18x6az5qfghdm.amplifyapp.com/api/invitation/${id}`);
+            const response = await fetch(`https://crushmoi.vercel.app/api/invitation/${id}`);
             if (response.ok) {
                 const data = await response.json();
                 setInvitationData(data);
