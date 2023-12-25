@@ -14,11 +14,8 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 
-// Utiliser CORS avec les options configurées
-app.use(cors(corsOptions));
-
-// Utiliser bodyParser
-app.use(bodyParser.json());
+app.use(cors(corsOptions)); 
+app.use(bodyParser.json()); 
 
 // Vérification des variables d'environnement
 console.log("DB Host:", process.env.DB_HOST);

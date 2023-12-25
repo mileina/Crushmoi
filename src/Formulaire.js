@@ -18,7 +18,8 @@ function Formulaire() {
     const id = uuidv4(); 
     const formData = { id, email, date, messageOui, messageNon };
   
-fetch('https://crushmoi-253caabc1013.herokuapp.com/api/invitation', {
+    console.log(formData)
+fetch('http://localhost:3001/api/invitation', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ fetch('https://crushmoi-253caabc1013.herokuapp.com/api/invitation', {
 })
 
 .then(data => {
-  const newLink = `https://crushmoi-253caabc1013.herokuapp.com/invitation/${data.id}`; 
+  const newLink = `https://crushmoi-b78956e48bb4.herokuapp.com/invitation/${data.id}`; 
   setGeneratedLink(newLink);
 })
 
