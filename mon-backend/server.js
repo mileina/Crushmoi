@@ -1,5 +1,25 @@
 require('dotenv').config({ path: './.env.eu-nort' });
 
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mysql = require('mysql');
+
+const app = express();
+const port = process.env.PORT || 3001;
+
+// Configuration CORS
+const corsOptions = {
+  origin: 'https://crushmoi-b78956e48bb4.herokuapp.com',
+  optionsSuccessStatus: 200
+};
+
+// Utiliser CORS avec les options configurées
+app.use(cors(corsOptions));
+
+// Utiliser bodyParser
+app.use(bodyParser.json());
+
 // Vérification des variables d'environnement
 console.log("DB Host:", process.env.DB_HOST);
 console.log("DB User:", process.env.DB_USER);
@@ -7,19 +27,7 @@ console.log("DB Password:", process.env.DB_PASSWORD);
 console.log("DB Database:", process.env.DB_DATABASE);
 console.log("DB Port:", process.env.DB_PORT);
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-const app = express();
-const port = process.env.PORT || 3001;
-
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
-
 // Connection to MariaDB
-const mysql = require('mysql');
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -28,6 +36,7 @@ const db = mysql.createConnection({
   port: process.env.DB_PORT
 });
 
+// Connect to the database
 db.connect(err => {
   if (err) {
     console.error('Error connecting to the database: ' + err.stack);
