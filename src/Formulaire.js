@@ -34,7 +34,7 @@ function Formulaire() {
 })
 
 .then(data => {
-  const newLink = `https://https://main.d18x6az5qfghdm.amplifyapp.com//invitation/${data.id}`; 
+  const newLink = `https://main.d18x6az5qfghdm.amplifyapp.com/invitation/${data.id}`; 
   setGeneratedLink(newLink);
 })
 
