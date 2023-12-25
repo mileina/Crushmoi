@@ -7,6 +7,8 @@ const mysql = require('mysql');
 
 const app = express();
 const port = process.env.PORT || 3001;
+
+
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://crushmoi-b78956e48bb4.herokuapp.com'], 
   optionsSuccessStatus: 200
@@ -49,6 +51,22 @@ app.get('/', (req, res) => {
   res.send('Server is up and running');
 });
 
+// Create a new invitation
+app.post('/api/invitation', (req, res) => {
+  const { id, email, date, messageOui, messageNon } = req.body;
+  console.log('Données reçues:', req.body);
+
+  // Enregistrement dans la base de données
+  const query = 'INSERT INTO invitations (id, email, date, messageOui, messageNon) VALUES (?, ?, ?, ?, ?)';
+  db.query(query, [id, email, date, messageOui, messageNon], (err, result) => {
+      if (err) {
+          res.status(500).json({ error: 'Error saving data' });
+      } else {
+          res.json({ message: 'Invitation saved', id });
+      }
+  });
+});
+
 // Fetch invitation data
 app.get('/api/invitation/:id', (req, res) => {
     const invitationId = req.params.id;
@@ -66,18 +84,7 @@ app.get('/api/invitation/:id', (req, res) => {
     });
 });
 
-// Create a new invitation
-app.post('/api/invitation', (req, res) => {
-    const { id, email, date, messageOui, messageNon } = req.body;
-    const query = 'INSERT INTO invitations (id, email, date, messageOui, messageNon) VALUES (?, ?, ?, ?, ?)';
-    db.query(query, [id, email, date, messageOui, messageNon], (err, result) => {
-      if (err) {
-        res.status(500).json({ error: 'Error saving data' });
-      } else {
-        res.json({ message: 'Invitation saved', id });
-      }
-    });
-});
+
 
 // Start the server
 app.listen(port, () => {
