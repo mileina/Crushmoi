@@ -41,7 +41,9 @@ function Formulaire() {
 
 .catch((error) => {
   console.error('Error:', error);
+  console.error('Error message:', error.message);
 });
+
 
   };
   
