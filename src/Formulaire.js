@@ -18,33 +18,33 @@ function Formulaire() {
     const id = uuidv4(); 
     const formData = { id, email, date, messageOui, messageNon };
   
-    console.log(formData)
+    console.log(formData);
     fetch('https://main.d18x6az5qfghdm.amplifyapp.com/api/invitation', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(formData),
-})
-.then(response => {
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return response.json();
-})
-
-.then(data => {
-  const newLink = `https://main.d18x6az5qfghdm.amplifyapp.com/invitation/${data.id}`; 
-  setGeneratedLink(newLink);
-})
-
-
-.catch((error) => {
-  console.error('Error:', error);
-  console.error('Error message:', error.message);
-});
-
-
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.text(); 
+    })
+    .then(text => {
+      try {
+        const data = JSON.parse(text); 
+        const newLink = `https://main.d18x6az5qfghdm.amplifyapp.com/invitation/${data.id}`; 
+        setGeneratedLink(newLink);
+      } catch (e) {
+        throw new Error(`Could not parse JSON: ${text}`);
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      console.error('Error message:', error.message);
+    });
   };
   
 
