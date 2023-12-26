@@ -58,7 +58,7 @@ function Formulaire() {
       <h1>Crush moi</h1>
       <form id="rendezVousForm" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Ton email pour voir la reponse</label>
+          <label htmlFor="email">Entre ton email</label>
           <input
             type="email"
             id="email"
@@ -104,7 +104,7 @@ function Formulaire() {
       </form>
       {generatedLink && (
   <div>
-  <p>Votre lien d'invitation unique:</p>
+  <p>Ton lien a envoyer !</p>
   <input
     type="text"
     value={generatedLink}
